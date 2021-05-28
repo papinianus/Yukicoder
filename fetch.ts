@@ -80,8 +80,6 @@ const submissionInfos = (
 ).flat(1);
 
 // 3. fetch source codes, write file
-
-console.table(submissionInfos);
 const filePath = (no: number, submissionId: number, extension: string) =>
   `./${no}/${submissionId}.${extension}`;
 const a = await Promise.all(
