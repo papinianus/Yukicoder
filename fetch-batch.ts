@@ -82,7 +82,7 @@ const submissionInfos = (
 // 3. fetch source codes, write file
 const filePath = (no: number, submissionId: number, extension: string) =>
   `./${no}/${submissionId}.${extension}`;
-const a = await Promise.all(
+await Promise.all(
   submissionInfos.map((submission) =>
     existsSync(filePath(...submission))
       ? Promise.resolve(false)
