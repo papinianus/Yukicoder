@@ -8,7 +8,13 @@ class UtilIO {
         return trim(fgets(STDIN));
     }
     public static function getInt():int {
-        return intval(trim(fgets(STDIN)));
+        return intval(static::getString());
+    }
+    public static function getStringArray($separator = " "):array {
+        return explode($separator, static::getString());
+    }
+    public static function getIntArray($separator = " "):array {
+        return array_map('intval', static::getStringArray($separator));
     }
     public static function echo(string $str):void {
         echo static::toLine($str);
