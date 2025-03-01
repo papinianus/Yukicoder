@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+$s = UtilIO::getString();
+for($i = 0; $i < 26; $i++) {
+    if($s[$i] !== chr($i+97)) break;
+}
+$char = chr($i+97);
+UtilIO::echo("{$char}to{$s[$i]}");
+
 
 class UtilIO {
     protected static string $n = PHP_EOL;

@@ -1,5 +1,11 @@
 <?php
 declare(strict_types=1);
+$s = UtilIO::getString();
+$chars = array_flip(count_chars($s, 1));
+$uniq_char = chr($chars[1]);
+$pos = strpos($s, $uniq_char) + 1;
+UtilIO::echo("{$pos} {$uniq_char}");
+
 
 class UtilIO {
     protected static string $n = PHP_EOL;

@@ -1,4 +1,4 @@
-//deno run --allow-net --unstable --allow-read --allow-write fetch.ts
+//deno run --allow-net --allow-read --allow-write fetch-latest.ts
 
 import { ensureDir, exists, existsSync } from 'https://deno.land/std/fs/mod.ts';
 import {
