@@ -1,6 +1,17 @@
 <?php
 declare(strict_types=1);
 
+[$a, $b, $c, $d] = UtilIO::getIntArray();
+$x = abs($a - $c);
+$y = abs($b - $d);
+if(($x + $y) <= 3) {
+    UtilIO::echo(1);
+} else if($x * $y === 0) {
+    UtilIO::echo(1);
+} else {
+    UtilIO::echo(2);
+}
+
 class UtilIO {
     protected static string $n = PHP_EOL;
     protected const YES = "YES";
@@ -64,43 +75,10 @@ function array_some(array $array, callable $callback, int $mode = 0): bool {
     }
     return false;
 }
-function array_zip(array $first, array $second, callable $callback): array {
-    $result = [];
-    foreach($first as $k => $v) {
-        $result[$k] = $callback($v, $second[$k]);
-    }
-    return $result;
-}
 function arrayCallbackDelegate(callable $fn, string|int $key, mixed $value, int $mode = 0):mixed {
     return match ($mode) {
         ARRAY_FILTER_USE_BOTH => $fn($key, $value),
         ARRAY_FILTER_USE_KEY => $fn($key),
         default => $fn($value),
     };
-}
-
-class Triple {
-    private array $items = [];
-    public function __construct(array $array) {
-        if(count($array) !== 3) throw new UnexpectedValueException("Array length should be 3.");
-        if(array_some($array,fn($e) => !is_int($e))) throw new UnexpectedValueException("Every element should be integer.");
-        $this->items = $array;
-    }
-    public function is_kadomatsu():bool {
-        if ($this->items[0] === $this->items[1]) return false;
-        if ($this->items[0] === $this->items[2]) return false;
-        if ($this->items[1] === $this->items[2]) return false;
-        if ($this->items[1] === max($this->items)) return true;
-        if ($this->items[1] === min($this->items)) return true;
-        return false;
-    }
-    public function getElementOf(int $index):int {
-        if($index < 0 || $index > 2) throw UnexpectedValueException("Out of range: $index");
-        return $this->items[$index];
-    }
-    public function exchange(int $index, int $value):Triple {
-        $array = $this->items;
-        $array[$index] = $value;
-        return new Triple($array);
-    }
 }

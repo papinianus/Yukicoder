@@ -1,8 +1,15 @@
 <?php
 declare(strict_types=1);
 
+[$n, $s] = UtilIO::getIntArray();
+// 每日 29 度で n 日経過した数以内
+$upper_bound = $s <= (29 * $n);
+// 1 日だけ 25 日で他は 0 度(非負数列)だったケースを満たす
+$lower_bound = $s >= 25;
+
+UtilIO::echoYNPascal($upper_bound && $lower_bound);
+
 class UtilIO {
-    protected static string $n = PHP_EOL;
     protected const YES = "YES";
     protected const NO = "NO";
     protected function __construct() { }
@@ -17,9 +24,6 @@ class UtilIO {
     }
     public static function getIntArray($separator = " "):array {
         return array_map('intval', static::getStringArray($separator));
-    }
-    public static function getFloatArray($separator = " "):array {
-        return array_map('floatval', static::getStringArray($separator));
     }
     public static function echoYNCapital(bool $b) {
         static::echo($b ? UtilIO::YES : UtilIO::NO);
@@ -48,7 +52,7 @@ class UtilIO {
         var_export($value);
     }
     public static function toLine(string $str):string {
-        return trim($str).static::$n;
+        return trim($str).PHP_EOL;
     }
 }
 

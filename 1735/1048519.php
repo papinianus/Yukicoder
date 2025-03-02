@@ -1,8 +1,20 @@
 <?php
 declare(strict_types=1);
 
+$s = UtilIO::getString();
+$isE = $s === 'E';
+$isB = $s === 'B';
+
+if($isE) {
+    $ans = 'F';
+} elseif ($isB) {
+    $ans = 'C';
+} else {
+    $ans = "{$s}#";
+}
+UtilIO::echo($ans);
+
 class UtilIO {
-    protected static string $n = PHP_EOL;
     protected const YES = "YES";
     protected const NO = "NO";
     protected function __construct() { }
@@ -17,9 +29,6 @@ class UtilIO {
     }
     public static function getIntArray($separator = " "):array {
         return array_map('intval', static::getStringArray($separator));
-    }
-    public static function getFloatArray($separator = " "):array {
-        return array_map('floatval', static::getStringArray($separator));
     }
     public static function echoYNCapital(bool $b) {
         static::echo($b ? UtilIO::YES : UtilIO::NO);
@@ -48,7 +57,7 @@ class UtilIO {
         var_export($value);
     }
     public static function toLine(string $str):string {
-        return trim($str).static::$n;
+        return trim($str).PHP_EOL;
     }
 }
 
