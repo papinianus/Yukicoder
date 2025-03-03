@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
+$t = UtilIO::getString();
+$ans = preg_replace('/\(.*?\)/', '@', $t);
 UtilIO::echo($ans);
 
 class UtilIO {

@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
+UtilIO::getString();
 $s = UtilIO::getString();
-$ans = '';
+$ans = substr($s, 1, strlen($s) - 2);
 UtilIO::echo($ans);
 
 class UtilIO {

@@ -1,9 +1,22 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+$actions = [2, 2, -1, -1, 2, -1, -1];
+$n = 100;
+$pos = 0;
+$distance = 0;
+$x = UtilIO::getInt();
+while($n > 0) {
+    foreach($actions as $action) {
+        $pos += $action;
+        $distance += abs($action);
+        if($pos === $x) {
+            break 2;
+        }
+    }
+    $n--;
+}
+UtilIO::echo($distance);
 
 class UtilIO {
     protected static string $n = PHP_EOL;
