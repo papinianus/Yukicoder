@@ -1,9 +1,22 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+[$n, $s, $k] = UtilIO::getIntArray();
+$diffs = [];
+foreach(range(1,$n) as $i) {
+    $a = UtilIO::getInt();
+    $diff = abs($s - $a);
+    if(isset($diffs[$diff])) {
+        continue;
+    }
+    $diffs[$diff] = $i;
+}
+$min_key = min(array_keys($diffs));
+if($min_key > $k) {
+    UtilIO::echo("Unlucky!");
+    exit;
+}
+UtilIO::echo($diffs[$min_key]);
 
 class UtilIO {
     protected static string $n = PHP_EOL;

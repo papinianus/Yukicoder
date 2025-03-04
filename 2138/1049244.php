@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+[$a, $b, $c, $d, $e] = UtilIO::getIntArray();
+$max = max($a - $b, $a - $b + ($d - $e) * $c);
+UtilIO::echo($max);
 
 class UtilIO {
     protected static string $n = PHP_EOL;

@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+$a = UtilIO::getInt();
+UtilIO::echo($a * 2 - 1);
 
 class UtilIO {
     protected static string $n = PHP_EOL;

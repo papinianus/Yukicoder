@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
+$unit = 2.18169499062491237350;
+$n = UtilIO::getString();
+$ans = $n ** 3 * $unit;
 UtilIO::echo($ans);
 
 class UtilIO {

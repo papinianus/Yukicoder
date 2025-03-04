@@ -1,9 +1,15 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+[$a, $b] = UtilIO::getFloatArray();
+$converted_b = $b * 6 * 6 / 10;
+if($a > $converted_b) {
+    UtilIO::echo("KoD");
+} else if ($converted_b > $a) {
+    UtilIO::echo("blackyuki");
+} else {
+    UtilIO::echo("same");
+}
 
 class UtilIO {
     protected static string $n = PHP_EOL;

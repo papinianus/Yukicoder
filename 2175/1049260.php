@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+$nums = UtilIO::getIntArray();
+UtilIO::echo(max(array_sum($nums), $nums[2] * 3));
 
 class UtilIO {
     protected static string $n = PHP_EOL;

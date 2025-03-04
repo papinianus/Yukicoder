@@ -2,8 +2,23 @@
 declare(strict_types=1);
 
 $s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+switch($s[0]) {
+    case 'Z':
+        UtilIO::echo("1st");
+        exit;
+    case 'B':
+        UtilIO::echo("2nd");
+        exit;
+    case 'S':
+        UtilIO::echo("3rd");
+        exit;
+    case 'E':
+        UtilIO::echo("4th");
+        exit;
+    default:
+        UtilIO::echo("Alpha");
+        exit;
+}
 
 class UtilIO {
     protected static string $n = PHP_EOL;

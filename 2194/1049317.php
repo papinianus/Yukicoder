@@ -1,9 +1,12 @@
 <?php
 declare(strict_types=1);
 
-$s = UtilIO::getString();
-$ans = '';
-UtilIO::echo($ans);
+[$a, $b, $c] = UtilIO::getIntArray();
+$passed = false;
+// $a * n に対して $b を引かないことができるのは $a * n <= $b の場合のみ。なので、$c > $b の場合は $a * n = $c となった時点で -$b が強制され、ここで pass できない。
+if($c <= $b && $c % $a === 0) { UtilIO::echo($c / $a); $passed = true; };
+if(($c + $b) % $a === 0) { UtilIO::echo(($c + $b) / $a); $passed = true; };
+if($passed === false) { UtilIO::echo(-1); } 
 
 class UtilIO {
     protected static string $n = PHP_EOL;
